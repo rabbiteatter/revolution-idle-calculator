@@ -1,10 +1,7 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
   const [RP, setRP] = useState('');  
   const [RPE, setRPE] = useState('');  
   const [DP, setDP] = useState('');  
@@ -80,7 +77,7 @@ function App() {
               className="exp-input-box"
             />
             <button className="exp_btn" onClick={() => incrementExp(setDPE)}>+3</button>
-            <button className="exp_btn" onClick={() => decrementExp(setDPE)}>+3</button>
+            <button className="exp_btn" onClick={() => decrementExp(setDPE)}>-3</button>
             </div>
             <div> <p></p> </div>
             {/* Second Line */}
