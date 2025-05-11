@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://rabbiteatter.github.io/<your-repo-name>",
+  "homepage": "https://rabbiteatter.github.io/revolution-idle-calculator",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
