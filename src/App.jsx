@@ -2,8 +2,9 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [RP, setRP] = useState('');  
-  const [RPE, setRPE] = useState('');  
+  const [RP, setRP] = useState('');
+  const [Lab5, setLab5] = useState('');  
+  const [Lab6, setLab6] = useState('');  
   const [DP, setDP] = useState('');  
   const [DPE, setDPE] = useState('');
   const [DP_dur, setDP_dur] = useState('');
@@ -42,23 +43,54 @@ function App() {
               placeholder="RP"
               className="input-box"
             />
-            <span> E </span>
+          </div>
+          <div> <p></p> </div>
+          {/* Second Line */}
+          <div>
+            <span> Ratio: </span>
             <input
               type="number"
-              value={RPE}
-              onChange={handleInputChange(setRPE)}
-              placeholder="Exp"
-              className="exp-input-box"
+              value={Lab5}
+              onChange={handleInputChange(setLab5)}
+              placeholder="Lab 5"
+              className="input-box"
             />
-            <button className="exp_btn" onClick={() => incrementExp(setRPE)}>+3</button>
-            <button className="exp_btn" onClick={() => decrementExp(setRPE)}>-3</button>
+            <span> : </span>
+            <input
+              type="number"
+              value={Lab6}
+              onChange={handleInputChange(setLab6)}
+              placeholder="Lab 6"
+              className="input-box"
+            />
           </div>
-          <p>Result</p>
+          <div className="DP-result">
+              <h5>Result: {(() => {
+                const RPs = parseInt(RP) || 0;
+                const ratio = [parseInt(Lab5) || 0, parseInt(Lab6) || 0]
+                //const L5 = parseInt(Lab5) || 0;
+                //const L6 = parseInt(Lab6) || 0;
+
+                if (RPs > 0 && ratio[0] > 0 && ratio[1] > 0) {
+                  // Perform the main calculation
+                  const L5 = Math.floor(RPs/(ratio[0] + ratio[1]) * ratio[0]);
+                  const L6 = Math.floor(RPs/(ratio[0] + ratio[1]) * ratio[1]);
+
+          
+                  // Round result to 2 decimal places
+                  let result = `${L5} | ${L6} (${L5+L6})`;
+          
+                  // Format the result with 'E' and exponent
+                  return `${result}`;
+                }
+                return 'Invalid inputs';
+              })()}</h5>
+            </div>
         </div>
 
         {/* Laboratory Card 2 */}
         <div className="card">
-          <h4 className="card-title">Laboratory</h4>
+          <h4 className="card-title">Dilation</h4>
           <div className="Current-DP-income">
           <span> Current DP income: </span>
             <input
@@ -120,7 +152,7 @@ function App() {
                   // Format the result with 'E' and exponent
                   return `${result}E+${exponent}`;
                 }
-                return 'Invalid duration';
+                return 'Invalid inputs';
               })()}</h5>
             </div>
         </div>
